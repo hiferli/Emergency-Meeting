@@ -26,7 +26,11 @@ const io = new Server(server , {
 });
 
 io.on("connect" , (socket) => {
-    console.log(socket.id)
+    // console.log(socket.id)
+
+    socket.on("join_room" , (data) => {
+        socket.join(data); 
+    })
 
     socket.on("sendMessage" , (data) => {
         socket.broadcast.emit("recieveMessage" , data);
