@@ -34,7 +34,9 @@ function App() {
   return (
     <div className="App">
        <input placeholder='Room Number' onChange={(event) => setRoom(event.target.value)} />
-       <button onClick={joinRoom}>Send Message</button>
+       <button onClick={joinRoom}>Join Room</button>
+
+       <br />
 
        <input placeholder='Message...' onChange={(event) => setMessage(event.target.value)} />
        <button onClick={sendMessage}>Send Message</button>
