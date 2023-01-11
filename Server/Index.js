@@ -25,6 +25,10 @@ const io = new Server(server , {
     }
 });
 
+io.on("connect" , (socket) => {
+    console.log(socket.id)
+})
+
 server.listen(3001 , () => {
     console.log("Server running successfully")
 })
