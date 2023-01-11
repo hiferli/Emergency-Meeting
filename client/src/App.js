@@ -1,14 +1,16 @@
 import './App.css';
 import io from 'socket.io-client'
-import { useEffect } from 'react';
+import { useEffect , useState } from 'react';
 
 // Gets URL for backend server
 const socket = io.connect("http://localhost:3001")
 
 function App() {
+  const [message, setMessage] = useState("")
+
   const sendMessage = () => {
     socket.emit("sendMessage" , {
-      message: "Hello!"
+      message: message
     })
   }
 
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-       <input placeholder='Message...' />
+       <input placeholder='Message...' onChange={(event) => setMessage(event.target.value)} />
        <button onClick={sendMessage}>Send Message</button>
     </div>
   );
