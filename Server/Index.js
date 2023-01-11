@@ -29,8 +29,10 @@ io.on("connect" , (socket) => {
     console.log(socket.id)
 
     socket.on("sendMessage" , (data) => {
-        console.log(data)
+        socket.broadcast.emit("recieveMessage" , data);
+        // console.log(data)
     })
+
 })
 
 server.listen(3001 , () => {
