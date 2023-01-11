@@ -7,6 +7,7 @@ const socket = io.connect("http://localhost:3001")
 
 function App() {
   const [message, setMessage] = useState("")
+  const [recievedMessage, setRecievedMessage] = useState("");
 
   const sendMessage = () => {
     socket.emit("sendMessage" , {
@@ -16,7 +17,8 @@ function App() {
 
   useEffect(() => {
     socket.on("recieveMessage" , (data) => {
-      alert(data.message)
+      // alert(data.message)
+      setRecievedMessage(data.message);
     });
   } , [socket])
   
@@ -25,6 +27,8 @@ function App() {
     <div className="App">
        <input placeholder='Message...' onChange={(event) => setMessage(event.target.value)} />
        <button onClick={sendMessage}>Send Message</button>
+       <h1>Message: </h1>
+       <h4>{recievedMessage}</h4>
     </div>
   );
 }
