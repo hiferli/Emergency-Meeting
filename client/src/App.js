@@ -9,10 +9,12 @@ function App() {
   const [message, setMessage] = useState("")
   const [recievedMessage, setRecievedMessage] = useState("");
   const [room, setRoom] = useState("");
+  const [showRoom, setShowRoom] = useState("");
 
   const joinRoom = () => {
     if(room !== ""){
       socket.emit("join_room" , room);
+      setShowRoom(room);
     }
   }
 
@@ -35,6 +37,8 @@ function App() {
     <div className="App">``
        <input placeholder='Room Number' onChange={(event) => setRoom(event.target.value)} />
        <button onClick={joinRoom}>Join Room</button>
+
+       <h1>{`Connected on: ${showRoom === "" ? "Universal Port" : "Room Number: " + showRoom}`}</h1>
 
        <br />
 
