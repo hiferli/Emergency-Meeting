@@ -15,8 +15,6 @@ app.use(cors());
 // Creating Express Server
 const server = http.createServer(app);
 
-
-
 // Working with SocketIO
 const io = new Server(server , {
     cors: {
@@ -33,7 +31,7 @@ io.on("connect" , (socket) => {
     })
 
     socket.on("sendMessage" , (data) => {
-        socket.broadcast.emit("recieveMessage" , data);
+        socket.to(data.room).emit("recieveMessage" , data);
         // console.log(data)
     })
 
