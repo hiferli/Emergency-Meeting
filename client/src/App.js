@@ -32,7 +32,7 @@ function App() {
   
 
   return (
-    <div className="App">
+    <div className="App">``
        <input placeholder='Room Number' onChange={(event) => setRoom(event.target.value)} />
        <button onClick={joinRoom}>Join Room</button>
 
